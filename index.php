@@ -158,7 +158,7 @@
 </head>
 
 <body>
-    <header class="d-flex justify-content-center py-3 fixed-top">
+    <header class="d-flex justify-content-center py-3 fixed-top bg-dark">
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Home</a></li>
             <li class="nav-item"><a href="#about" class="nav-link" data-bs-toggle="modal" data-bs-target="#ABOUTMODAL">About Us</a></li>
