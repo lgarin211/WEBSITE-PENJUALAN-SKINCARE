@@ -31,11 +31,6 @@
     var_dump($data);die;
   }
   $query = "SELECT * FROM produk";
-  if(isset($_GET["M"])){
-    $query = "SELECT * FROM produk WHERE MEREK LIKE '%".$_GET["M"]."%'";
-  }else if(isset($_GET["K"])){
-    $query = "SELECT * FROM produk WHERE kategori LIKE '%".$_GET["K"]."%'";
-  }
   $result = $conn->query($query);
   $result2=$result;
 ?>
@@ -327,11 +322,9 @@
                 <div class="pl">
                     <div class="card bg-wp">
                         <div class="row">
-                            <div class="col-6" style="margin-bottom: 2vh;">
+                        <div class="col-6" style="margin-bottom: 2vh;">
                                 <h5>FILTER BY MEREK</h5>
-                                <select name="" id="M" class="form-select" onchange="fex()">
-                                <option value="">PILIH</option>
-                                <option value="">Semua</option>
+                                <select name="" id="" class="form-select">
                                     <?php 
                                         $sql = "SELECT * FROM view_merek";
                                         $result = $conn->query($sql);
@@ -343,19 +336,16 @@
                             </div>
                             <div class="col-6" style="margin-bottom: 2vh;">
                                 <h5>FILTER BY kategori</h5>
-                                <select name="" id="K" class="form-select" onchange="bil()">
-                                <option value="">PILIH</option>
-                                <option value="">Semua</option>
+                                <select name="" id="" class="form-select">
                                     <?php 
                                         $sql = "SELECT * FROM kategori";
                                         $result = $conn->query($sql);
                                         foreach($result as $row):
                                     ?>
-                                    <option value="<?=$row["kategori"]?>"><?=$row["kategori"]?></option>
+                                    <option value="<?=$row["MEREK"]?>"><?=$row["MEREK"]?></option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -454,15 +444,6 @@
     </footer>
     <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
-    </script>
-    <script>
-    function fex() {
-        window.location.href = "./index.php?M=" + document.getElementById("M").value;
-    }
-
-    function bil() {
-        window.location.href = "./index.php?K=" + document.getElementById("K").value;
-    }
     </script>
 </body>
 
