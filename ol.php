@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Data Produk</title>
     <!-- Tambahkan link CSS Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
+
 <body>
+    <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="./il.php" class="nav-link">Transaksi</a></li>
+            <li class="nav-item"><a href="./ol.php" class="nav-link">Produk</a></li>
+            <?php if(!empty($_SESSION["name"])):?>
+            <li class="nav-item"><a href="#" class="nav-link" data-bs-toggle="modal"
+                    data-bs-target="#Keranjang">Keranjang</a></li>
+            <?php endif;?>
+        </ul>
+    </header>
     <div class="container">
         <h1>Data Produk</h1>
-        
+
         <?php
         // Membuat koneksi ke database
         $servername = "localhost";
@@ -38,7 +51,7 @@
                         <th>Kategori</th>
                         <th>Gambar</th>
                         <th>Deskripsi Singkat</th>
-                        <th>Deskripsi Lengkap</th>
+                        <!--<th>Deskripsi Lengkap</th>-->   
                         <th>Aksi</th>
                     </tr>";
             while ($row = $result->fetch_assoc()) {
@@ -67,12 +80,13 @@
         // Menutup koneksi
         $conn->close();
         ?>
-        
+
         <a href="#" data-toggle="modal" data-target="#addModal">Tambah Produk</a>
     </div>
 
     <!-- Modal Tambah Produk -->
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -118,7 +132,8 @@
                         </div>
                         <div class="form-group">
                             <label for="deslong">Deskripsi Lengkap</label>
-                            <input type="text" class="form-control" id="deslong" name="deslong" required>
+                            <textarea name="deslong" class="form-control" id="deslong" cols="40" rows="10"></textarea>
+                            <!-- <input type="text" class="form-control" id="deslong" name="deslong" required> -->
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
@@ -128,7 +143,8 @@
     </div>
 
     <!-- Modal Edit Produk -->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -185,7 +201,8 @@
     </div>
 
     <!-- Modal Delete Produk -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -211,21 +228,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script>
-        // Mengambil data ID produk saat tombol Edit di klik
-        $('#editModal').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget);
-            var id = button.data('id');
-            var modal = $(this);
-            modal.find('#edit-id').val(id);
-        });
+    // Mengambil data ID produk saat tombol Edit di klik
+    $('#editModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget);
+        var id = button.data('id');
+        var modal = $(this);
+        modal.find('#edit-id').val(id);
+    });
 
-        // Mengambil data ID produk saat tombol Delete di klik
-        $('#deleteModal').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget);
-            var id = button.data('id');
-            var modal = $(this);
-            modal.find('#delete-id').val(id);
-        });
+    // Mengambil data ID produk saat tombol Delete di klik
+    $('#deleteModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget);
+        var id = button.data('id');
+        var modal = $(this);
+        modal.find('#delete-id').val(id);
+    });
     </script>
 </body>
+
 </html>

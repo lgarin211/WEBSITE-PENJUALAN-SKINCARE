@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Data Konsumen</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -7,7 +8,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
 <body>
+    <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="./il.php" class="nav-link">Transaksi</a></li>
+            <li class="nav-item"><a href="./ol.php" class="nav-link">Produk</a></li>
+            <?php if(!empty($_SESSION["name"])):?>
+            <li class="nav-item"><a href="#" class="nav-link" data-bs-toggle="modal"
+                    data-bs-target="#Keranjang">Keranjang</a></li>
+            <?php endif;?>
+        </ul>
+    </header>
     <div class="container">
         <h2>Data Konsumen</h2>
         <table class="table">
@@ -84,21 +97,24 @@
     </div>
 
     <script>
-        function showModal(name) {
-            // Menggunakan AJAX untuk mendapatkan data transaksi berdasarkan nama konsumen
-            $.ajax({
-                url: "get_transactions.php",
-                type: "POST",
-                data: { name: name },
-                success: function(response) {
-                    $("#modal-body").html(response);
-                    $("#myModal").modal("show");
-                },
-                error: function(xhr, status, error) {
-                    console.log(xhr.responseText);
-                }
-            });
-        }
+    function showModal(name) {
+        // Menggunakan AJAX untuk mendapatkan data transaksi berdasarkan nama konsumen
+        $.ajax({
+            url: "get_transactions.php",
+            type: "POST",
+            data: {
+                name: name
+            },
+            success: function(response) {
+                $("#modal-body").html(response);
+                $("#myModal").modal("show");
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
     </script>
 </body>
+
 </html>

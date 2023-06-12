@@ -162,9 +162,9 @@
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Brend</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Categori</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link" data-bs-toggle="modal" data-bs-target="#ABOUTMODAL">About Us</a></li>
+            <li class="nav-item"><a href="#M" class="nav-link">Brend</a></li>
+            <li class="nav-item"><a href="#K" class="nav-link">Categori</a></li>
             <?php if(!empty($_SESSION["name"])):?>
             <li class="nav-item"><a href="#" class="nav-link" data-bs-toggle="modal"
                     data-bs-target="#Keranjang">Keranjang</a></li>
@@ -184,10 +184,6 @@
                             data-bs-target="#LOGINMODAL">LOGIN</a>
                         <?php else:?>
                     <h3>Hello <?= $_SESSION["name"];?></h3>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Keranjang">
-                        Keranjang
-                    </button>
-
                     <!-- Modal -->
                     <?php if(!empty($_SESSION['k'])):?>
                     <div class="modal fade" id="Keranjang" tabindex="-1" aria-labelledby="KeranjangLabel"
@@ -330,8 +326,8 @@
                             <div class="col-6" style="margin-bottom: 2vh;">
                                 <h5>FILTER BY MEREK</h5>
                                 <select name="" id="M" class="form-select" onchange="fex()">
-                                <option value="">PILIH</option>
-                                <option value="">Semua</option>
+                                    <option value="">PILIH</option>
+                                    <option value="">Semua</option>
                                     <?php 
                                         $sql = "SELECT * FROM view_merek";
                                         $result = $conn->query($sql);
@@ -344,8 +340,8 @@
                             <div class="col-6" style="margin-bottom: 2vh;">
                                 <h5>FILTER BY kategori</h5>
                                 <select name="" id="K" class="form-select" onchange="bil()">
-                                <option value="">PILIH</option>
-                                <option value="">Semua</option>
+                                    <option value="">PILIH</option>
+                                    <option value="">Semua</option>
                                     <?php 
                                         $sql = "SELECT * FROM kategori";
                                         $result = $conn->query($sql);
@@ -364,7 +360,7 @@
                     <?php while($row = $result2->fetch_assoc()): ?>
                     <div class="col">
                         <div class="card bg-wp2 shadow-sm <?=$row["MEREK"]?> <?=$row["kategori"]?>">
-                            <img src="<?=$row['img']?>" alt="">
+                            <img src="<?=$row['img']?>" alt="" style="height: 50vh;object-fit: cover;">
                             <div class="card-body">
                                 <h3><?=$row["Nama"]?></h3>
                                 <p class="card-text"><?=$row["desksing"]?>
@@ -372,9 +368,9 @@
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                        <button type="button" class="btn btn-sm btn-outline-dan ger"
                                             data-bs-toggle="modal" data-bs-target="#VIEW<?=$row['id']?>">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                        <button type="button" class="btn btn-sm btn-outline-primary"
                                             data-bs-toggle="modal"
                                             data-bs-target="#PurcePatView<?=$row['id']?>">Buy</button>
                                     </div>
@@ -442,6 +438,65 @@
             </div>
         </div>
     </main>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="ABOUTMODAL" tabindex="-1" aria-labelledby="ABOUTMODALLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="ABOUTMODALLabel">ABOUS US</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3 class="content-title">Your Online Beauty Destination</h3>
+                            <div class="content-text">
+                                <p> Kinan Store is Indonesia's trusted and most complete online shopping destination
+                                    offering authentic beauty products e.g. make up, skin care, hair care, fragrance and
+                                    beauty tools serving women across Indonesia. </p>
+                            </div>
+                            <h3 class="content-title">Only The Authentic and BPOM Certified</h3>
+                            <div class="content-text">
+                                <p> Quality and authenticity of beauty product is akin to the importance of taking care
+                                    of your own skin, a necessity to all women and Kinan Store takes it very seriously.
+                                    Usage of non-original or fraudulent beauty products could lead to permanent skin
+                                    damage. </p>
+                                <p> This has prompted Kinan Store to collaborate directly with authorized national
+                                    distributors and brand owners in Indonesia to ensure that every product you purchase
+                                    from Kinan Store are original and authentic, with the certification from Badan Pengawas
+                                    Obat dan Makanan ('BPOM'). </p>
+                                <p> Quality assurance of product storage is performed directly by Kinan Store's own
+                                    operations management with compliance to international standards and storage
+                                    guideline by the brand owners. </p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3 class="content-title">Delivery Guaranteed</h3>
+                            <div class="content-text">
+                                <p> Excellent service is shopping necessity. With our own storage facility, Kinan Store
+                                    ensures that product delivery is performed smoothly and product return can be
+                                    completed hassle-free. </p>
+                            </div>
+                            <h3 class="content-title">Your Daily Read of All Things Beauty</h3>
+                            <div class="content-text">
+                                <p> Inspired to be your trusted beauty advisor, Kinan Store presents you the Beauty
+                                    Journal, an online beauty media portal dedicated for women to explore and develop
+                                    their own unique beauty style, while receiving the latest information on trend and
+                                    brand developments. </p>
+                                <p>We hope you enjoy your shopping experience with Kinan Store.</p>
+                                <strong>For more information and suggestions, please email to cs@sociolla.com</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @2023 PT.Kinan skin Indonesia. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="bg-wp2 py-5">
         <div class="container">
             <p class="float-end mb-1">
