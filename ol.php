@@ -24,10 +24,10 @@
 
         <?php
         // Membuat koneksi ke database
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "skincare";
+        $servername = "103.219.251.244";
+        $username = "lahorasm_root";
+        $password = "@Lgarin211";
+        $dbname="@Lgarin211";;
         $conn = new mysqli($servername, $username, $password, $dbname);
         
         // Memeriksa koneksi

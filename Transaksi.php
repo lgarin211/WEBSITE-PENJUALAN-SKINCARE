@@ -1,6 +1,6 @@
 <?php
 session_start();
-$host = 'localhost'; 
+$host = '103.219.251.244'; 
 $username = 'root';
 $password = ''; 
 $database = 'skincare'; 

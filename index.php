@@ -19,10 +19,10 @@
     $_SESSION["call"]= $_GET["telp"];
     header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
-  $host = 'localhost'; // Ganti dengan host database Anda
-  $username = 'root'; // Ganti dengan username database Anda
-  $password = ''; // Ganti dengan password database Anda
-  $database = 'skincare'; // Ganti dengan nama database Anda
+  $host = '103.219.251.244'; // Ganti dengan host database Anda
+  $username = 'lahorasm_root'; // Ganti dengan username database Anda
+  $password = '@Lgarin211'; // Ganti dengan password database Anda
+  $database = 'lahorasm_root2'; // Ganti dengan nama database Anda
 
   $conn = mysqli_connect($host, $username, $password, $database);
   $result;

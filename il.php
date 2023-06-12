@@ -35,10 +35,10 @@
             <tbody>
                 <?php
                 // Koneksi ke database
-                $host = 'localhost';
-                $username = 'root';
-                $password = '';
-                $database = 'skincare';
+                $host = '103.219.251.244';
+                $username = 'lahorasm_root';
+                $password = '@Lgarin211';
+                $database = 'lahorasm_root2';
                 $conn = mysqli_connect($host, $username, $password, $database);
                 if (!$conn) {
                     die("Koneksi gagal: " . mysqli_connect_error());

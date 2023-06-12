@@ -5,10 +5,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST["id"];
     
     // Melakukan koneksi ke database
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "skincare";
+    $servername = "103.219.251.244";
+    $username = "lahorasm_root";
+    $password = "@Lgarin211";
+    $dbname = "lahorasm_root2";
     $conn = new mysqli($servername, $username, $password, $dbname);
     
     // Memeriksa koneksi
